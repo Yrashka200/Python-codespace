@@ -1,0 +1,24 @@
+{
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.indexing": false,
+  "python.analysis.userFileIndexingLimit": 100,
+  "python.analysis.packageIndexDepths": [
+    { "name": "sklearn", "depth": 2 },
+    { "name": "matplotlib", "depth": 2 }
+  ],
+  "files.watcherExclude": {
+    "**/.venv/**": true,
+    "**/__pycache__/**": true,
+    "**/.git/objects/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.ruff_cache/**": true
+  },
+  "editor.fontLigatures": false,
+  "editor.smoothScrolling": false,
+  "workbench.list.smoothScrolling": false,
+  "editor.cursorSmoothCaretAnimation": "off",
+  "editor.bracketPairColorization.enabled": false,
+  "workbench.iconTheme": "vs-minimal",
+  "terminal.integrated.gpuAcceleration": "off",
+  "telemetry.telemetryLevel": "off"
+}

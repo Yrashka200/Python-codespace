@@ -1,0 +1,82 @@
+{
+  "name": "Python Lite",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-python.debugpy",
+        "tamasfe.even-better-toml",
+        "eamodio.gitlens",
+        "usernamehw.errorlens",
+        "GitHub.copilot"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "python.analysis.diagnosticMode": "workspace",
+        "python.analysis.indexing": false,
+        "python.analysis.userFileIndexingLimit": 200,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit",
+            "source.fixAll.ruff": "explicit"
+          }
+        },
+        "files.watcherExclude": {
+          "**/.venv/**": true,
+          "**/__pycache__/**": true,
+          "**/.pytest_cache/**": true,
+          "**/.ruff_cache/**": true,
+          "**/.mypy_cache/**": true,
+          "**/node_modules/**": true
+        },
+        "search.exclude": {
+          "**/.venv": true,
+          "**/__pycache__": true
+        },
+        "telemetry.telemetryLevel": "off",
+        "git.autofetch": false,
+        "git.confirmSync": false,
+        "editor.minimap.enabled": false,
+        "editor.renderWhitespace": "boundary",
+        "workbench.startupEditor": "none",
+        "extensions.autoUpdate": false,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.gpuAcceleration": "off"
+      }
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
+  "postStartCommand": "bash .devcontainer/scripts/doctor.sh",
+
+  "remoteUser": "vscode",
+
+  "mounts": [
+    "source=py-venv-${devcontainerId},target=${containerWorkspaceFolder}/.venv,type=volume",
+    "source=uv-cache-${devcontainerId},target=/home/vscode/.cache/uv,type=volume"
+  ],
+
+  "forwardPorts": [8000, 5000],
+  "portsAttributes": {
+    "8000": { "label": "App", "onAutoForward": "notify" }
+  },
+
+  "containerEnv": {
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1"
+  },
+
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
+  }
+}

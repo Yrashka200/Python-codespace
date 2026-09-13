@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.Python
+
+# Caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+
+# uv
+uv.lock.bak
+
+# OS
+.DS_Store
+
+# Logs and temp
+*.log
+tmp/
